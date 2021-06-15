@@ -8,7 +8,7 @@ class ItemModel(db.Model):
 
     # link to store table by store_id(foreignkey)
     # 如果store_id找得到東西 無法delete store該筆資料
-    store_id = db.Column(db.Integer,db_ForeignKey('stores.id'))
+    store_id = db.Column(db.Integer,db.ForeignKey('stores.id'))
     store = db.relationship('StoreModel')
 
     def __init__(self,name,price,store_id):
