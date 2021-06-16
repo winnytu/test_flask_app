@@ -1,3 +1,5 @@
+import os
+
 from security import Login
 from flask import Flask
 from flask_restful import Api
@@ -14,7 +16,7 @@ from db import db
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'this-should-be-change'
 db.init_app(app)
